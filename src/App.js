@@ -32,11 +32,11 @@ function App() {
 		handleSubmit,
 		formState: { errors },
 	} = useForm();
-	const onSubmit = (data) => {
+	const onSubmit = (dataOne) => {
 		if (errors.isEmpty) {
 			console.log(errors);
 		} else {
-			console.log(data);
+			console.log(dataOne);
 			handleStepOne();
 			handleStepTwo();
 		}
@@ -48,8 +48,12 @@ function App() {
 			<div className="panel panel_our_info">
 				<div className="panel_title" onClick={handleStepOne}>
 					<h2>
-						<FontAwesomeIcon icon={solid("chevron-down")} /> Étape 1 : Vos
-						Informations
+						{stepOne ? (
+							<FontAwesomeIcon icon={solid("chevron-down")} />
+						) : (
+							<FontAwesomeIcon icon={solid("chevron-up")} />
+						)}{" "}
+						Étape 1 : Vos Informations
 					</h2>
 				</div>
 				{stepOne ? (
@@ -60,7 +64,10 @@ function App() {
 							<br></br>
 							{errors["Compagny name"] && (
 								<>
-									<p className="error">Vous devez remplire le nom de votre entreprise</p>
+									<p className="error">
+										<FontAwesomeIcon icon={solid("triangle-exclamation")} />
+										Vous devez remplire le nom de votre entreprise
+									</p>
 								</>
 							)}
 							<label>Adresse : </label>
@@ -71,7 +78,10 @@ function App() {
 							<br></br>
 							{errors["Compagny address"] && (
 								<>
-									<p className="error">Vous devez remplire l'adresse votre entreprise</p>
+									<p className="error">
+										<FontAwesomeIcon icon={solid("triangle-exclamation")} />
+										Vous devez remplire l'adresse votre entreprise
+									</p>
 								</>
 							)}
 							<label>Code Postal : </label>
@@ -86,7 +96,10 @@ function App() {
 							<br></br>
 							{errors["Compagny postal code"] && (
 								<>
-									<p className="error">Vous devez remplire un code postal correct</p>
+									<p className="error">
+										<FontAwesomeIcon icon={solid("triangle-exclamation")} />
+										Vous devez remplire un code postal correct
+									</p>
 								</>
 							)}
 							<label>Ville : </label>
@@ -99,7 +112,10 @@ function App() {
 							<br></br>
 							{errors["Compagny city"] && (
 								<>
-									<p className="error">Vous devez remplire la ville</p>
+									<p className="error">
+										<FontAwesomeIcon icon={solid("triangle-exclamation")} />
+										Vous devez remplire la ville
+									</p>
 								</>
 							)}
 							<label>Email : </label>
@@ -110,7 +126,10 @@ function App() {
 							<br></br>
 							{errors["Email"] && (
 								<>
-									<p className="error">Vous devez remplire une adresse mail valide</p>
+									<p className="error">
+										<FontAwesomeIcon icon={solid("triangle-exclamation")} />
+										Vous devez remplire une adresse mail valide
+									</p>
 								</>
 							)}
 							<label>Téléphone : </label>
@@ -122,6 +141,7 @@ function App() {
 							{errors["Phone"] && (
 								<>
 									<p className="error">
+										<FontAwesomeIcon icon={solid("triangle-exclamation")} />
 										Vous devez remplire un numéro de téléphone valide
 									</p>
 								</>
@@ -141,7 +161,10 @@ function App() {
 							<br></br>
 							{errors["SIRET number"] && (
 								<>
-									<p className="error">Vous devez remplire un numéro SIRET valide</p>
+									<p className="error">
+										<FontAwesomeIcon icon={solid("triangle-exclamation")} />
+										Vous devez remplire un numéro SIRET valide
+									</p>
 								</>
 							)}
 							<label>N° TVA intercommunautaire : </label>
@@ -155,7 +178,10 @@ function App() {
 							<br></br>
 							{errors["TVA number"] && (
 								<>
-									<p className="error">Vous devez remplire un numéro de TVA valide</p>
+									<p className="error">
+										<FontAwesomeIcon icon={solid("triangle-exclamation")} />
+										Vous devez remplire un numéro de TVA valide
+									</p>
 								</>
 							)}
 							<label>Code NAF : </label>
@@ -169,7 +195,10 @@ function App() {
 							<br></br>
 							{errors["NAF code"] && (
 								<>
-									<p className="error">Vous devez remplire un code NAF valide</p>-{" "}
+									<p className="error">
+										<FontAwesomeIcon icon={solid("triangle-exclamation")} />
+										Vous devez remplire un code NAF valide
+									</p>{" "}
 								</>
 							)}
 							<input type="submit" value="Étape suivante >" />
@@ -182,8 +211,12 @@ function App() {
 			<div className="panel panel_client_info">
 				<div className="panel_title" onClick={handleStepTwo}>
 					<h2>
-						<FontAwesomeIcon icon={solid("chevron-down")} /> Étape 2 : Informations du
-						client
+						{stepTwo ? (
+							<FontAwesomeIcon icon={solid("chevron-down")} />
+						) : (
+							<FontAwesomeIcon icon={solid("chevron-up")} />
+						)}{" "}
+						Étape 2 : Informations du client
 					</h2>
 				</div>
 				{stepTwo ? (
